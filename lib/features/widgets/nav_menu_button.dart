@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
+import 'scroll_utils.dart';
 
 class NavMenuButton extends StatefulWidget {
   final String title;
   final GlobalKey targetKey;
+  final VoidCallback? onNavigate;
+  final bool isExpanded;
+  final BorderRadius borderRadius;
 
   const NavMenuButton({
     super.key,
     required this.title,
     required this.targetKey,
+    this.onNavigate,
+    this.isExpanded = false,
+    this.borderRadius = const BorderRadius.all(Radius.circular(16)),
   });
 
   @override
@@ -21,14 +28,11 @@ class _NavMenuButtonState extends State<NavMenuButton> {
   bool _isHovered = false;
 
   void _scrollToSection() {
-    final context = widget.targetKey.currentContext;
-    if (context != null) {
-      Scrollable.ensureVisible(
-        context,
-        duration: const Duration(milliseconds: 800),
-        curve: Curves.easeInOutCubic,
-      );
-    }
+    widget.onNavigate?.call();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      scrollToKey(widget.targetKey);
+    });
   }
 
   @override
@@ -41,17 +45,17 @@ class _NavMenuButtonState extends State<NavMenuButton> {
       child: GestureDetector(
         onTap: _scrollToSection,
         child: AnimatedContainer(
-          // Длительность и кривая плавной анимации цвета
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeInOut,
+          width: widget.isExpanded ? double.infinity : null,
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           decoration: BoxDecoration(
-            // Динамически меняем цвет в зависимости от состояния
             color: _isHovered ? AppColors.lightStyle : AppColors.background,
-            borderRadius: BorderRadius.circular(16),
+            borderRadius: widget.borderRadius,
           ),
           child: Text(
             widget.title,
+            textAlign: widget.isExpanded ? TextAlign.left : TextAlign.center,
             style: TextStyle(
               color: _isHovered ? AppColors.background : AppColors.lightStyle,
               fontSize: 14,

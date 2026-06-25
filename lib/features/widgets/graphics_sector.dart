@@ -1,8 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:omion_auto_website/features/widgets/technical_charts_painter.dart';
 
 import '../theme/app_colors.dart';
+import '../theme/breakpoints.dart';
 
 
 class GraphicsSector extends StatefulWidget {
@@ -54,7 +54,10 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final bool isDesktop = constraints.maxWidth > 900;
+        final bool isDesktop = !isMobileLayout(context);
+        final titleSize = isDesktop ? 40.0 : 28.0;
+        final bodySize = isDesktop ? 16.0 : 15.0;
+        final chartHeight = isDesktop ? 400.0 : 260.0;
 
         // Контент слева (Текст)
         Widget textContent = FadeTransition(
@@ -63,21 +66,21 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
+              Text(
                 'Real-Time Automotive\nTelemetry & Data\nProcessing',
                 style: TextStyle(
                   color: AppColors.lightStyle,
-                  fontSize: 40,
+                  fontSize: titleSize,
                   fontWeight: FontWeight.bold,
                   height: 1.2,
                 ),
               ),
               const SizedBox(height: 24),
               Text(
-                'Track sensors, valve, and fuel trim instantly. Our system processes live OBD-II streams with minimal lag, giving you crystal-clear insights into your engine’s performance right as you drive.',
+                "Track sensors, valve, and fuel trim instantly. Our system processes live OBD-II streams with minimal lag, giving you crystal-clear insights into your engine's performance right as you drive.",
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(90),
-                  fontSize: 16,
+                  fontSize: bodySize,
                   height: 1.5,
                 ),
               ),
@@ -86,7 +89,7 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
                 'From tracking Short Term Fuel Trims to monitoring engine load and coolant temperatures — capture critical anomalies before they turn into costly repairs.',
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(90),
-                  fontSize: 16,
+                  fontSize: bodySize,
                   height: 1.5,
                 ),
               ),
@@ -102,9 +105,9 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
               painter: TechnicalChartsPainter(
                 progress: _chartProgressAnimation.value,
               ),
-              child: const SizedBox(
+              child: SizedBox(
                 width: double.infinity,
-                height: 400,
+                height: chartHeight,
               ),
             );
           },
@@ -112,7 +115,10 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
 
         // Адаптивная сетка без фонов и контейнеров
         return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 40.0, vertical: 60.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: isDesktop ? 40 : 0,
+            vertical: isDesktop ? 60 : 32,
+          ),
           child: isDesktop
               ? Row(
             crossAxisAlignment: CrossAxisAlignment.center,

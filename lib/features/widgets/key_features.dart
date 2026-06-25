@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../theme/app_colors.dart';
+import '../theme/breakpoints.dart';
 
 class KeyFeaturesSection extends StatelessWidget {
   const KeyFeaturesSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final isDesktop = screenWidth > 950; // Порог для переноса в мобильный вид
+    final isDesktop = !isMobileLayout(context);
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: 1.0),
@@ -18,66 +18,64 @@ class KeyFeaturesSection extends StatelessWidget {
         return Opacity(
           opacity: value,
           child: Transform.translate(
-            offset: Offset(0, 40 * (1 - value)), // Анимация появления снизу вверх
+            offset: Offset(0, 40 * (1 - value)),
             child: child,
           ),
         );
       },
       child: Column(
         children: [
-          // Главный заголовок блока
-          const Text(
+          Text(
             'KEY FEATURES',
             style: TextStyle(
               color: Colors.white,
-              fontSize: 28,
+              fontSize: isDesktop ? 28 : 22,
               fontWeight: FontWeight.bold,
               letterSpacing: 1.5,
             ),
           ),
-          const SizedBox(height: 50),
-
-          // Ряд из 4 карточек для ПК или вертикальный список для мобильных
+          SizedBox(height: isDesktop ? 50 : 32),
           isDesktop
               ? const Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(child: _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined)),
-              SizedBox(width: 16),
-              Expanded(child: _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined)),
-              SizedBox(width: 16),
-              Expanded(child: _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined)),
-              SizedBox(width: 16),
-              Expanded(child: _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined)),
-            ],
-          )
-              : Column(
-            children: [
-              const _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined),
-              const SizedBox(height: 16),
-              const _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined),
-              const SizedBox(height: 16),
-              const _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined),
-              const SizedBox(height: 16),
-              const _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined),
-            ],
-          ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Expanded(child: _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined)),
+                    SizedBox(width: 16),
+                    Expanded(child: _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined)),
+                    SizedBox(width: 16),
+                    Expanded(child: _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined)),
+                    SizedBox(width: 16),
+                    Expanded(child: _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined)),
+                  ],
+                )
+              : const Column(
+                  children: [
+                    _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined, isMobile: true),
+                    SizedBox(height: 16),
+                    _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined, isMobile: true),
+                    SizedBox(height: 16),
+                    _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined, isMobile: true),
+                    SizedBox(height: 16),
+                    _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined, isMobile: true),
+                  ],
+                ),
         ],
       ),
     );
   }
 }
 
-/// Приватный виджет интерактивной карточки преимущества с эффектом Hover
 class _FeatureCard extends StatefulWidget {
   final String title;
   final String subTitle;
   final IconData icon;
+  final bool isMobile;
 
   const _FeatureCard({
     required this.title,
     required this.subTitle,
     required this.icon,
+    this.isMobile = false,
   });
 
   @override
@@ -95,30 +93,30 @@ class _FeatureCardState extends State<_FeatureCard> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
-        padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 20.0),
-        height: 280,
-        width: 512,// Фиксированная высота для выравнивания карточек в ряду
+        padding: EdgeInsets.symmetric(
+          vertical: widget.isMobile ? 28 : 40,
+          horizontal: 20,
+        ),
+        height: widget.isMobile ? null : 280,
+        width: widget.isMobile ? double.infinity : 512,
         decoration: BoxDecoration(
-          // При наведении карточка окрашивается в цвет кнопок навигации, иначе остается полупрозрачной
           color: _isHovered ? AppColors.featureHovered : AppColors.featureUnhovered,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: _isHovered ? AppColors.background.withAlpha(70) : Color(0xFF67707F),
+            color: _isHovered ? AppColors.background.withAlpha(70) : const Color(0xFF67707F),
             width: 1,
           ),
         ),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Центрирование контента как на макете
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Верхняя иконка
             Icon(
               widget.icon,
-              size: 48,
-              color: Colors.white.withOpacity(_isHovered ? 0.9 : 0.6), // Иконка становится ярче при наведении
+              size: widget.isMobile ? 40 : 48,
+              color: Colors.white.withOpacity(_isHovered ? 0.9 : 0.6),
             ),
-            const SizedBox(height: 24),
-            // Заголовок карточки
+            SizedBox(height: widget.isMobile ? 16 : 24),
             Text(
               widget.title,
               textAlign: TextAlign.center,
@@ -130,7 +128,6 @@ class _FeatureCardState extends State<_FeatureCard> {
               ),
             ),
             const SizedBox(height: 10),
-            // Краткое описание фишки
             Text(
               widget.subTitle,
               textAlign: TextAlign.center,
