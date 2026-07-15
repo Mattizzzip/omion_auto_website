@@ -1,11 +1,11 @@
 {
-    "name": "omion_auto_website",
-    "short_name": "omion_auto_website",
+    "name": "OBDvia AI",
+    "short_name": "OBDvia AI",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "Website about omion auto information",
+    "description": "OBDvia AI - Smart Car Scanning. Professional OBD diagnostics on your phone.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

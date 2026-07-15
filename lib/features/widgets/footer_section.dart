@@ -41,7 +41,7 @@ class FooterSection extends StatelessWidget {
 
           // 2. Строка копирайта с актуальным годом
           const Text(
-            '© 2026 Omion Group. All rights reserved.',
+            '© 2026 OBDvia AI. All rights reserved.',
             style: TextStyle(
               color: Colors.white60,
               fontSize: 14,

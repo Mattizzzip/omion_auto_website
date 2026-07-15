@@ -63,7 +63,7 @@ class HeroSection extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Turn your smartphone into a professional diagnostic tool. OMION connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
+                    'Turn your smartphone into a professional diagnostic tool. OBDvia AI connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColors.lightStyle,
@@ -85,7 +85,7 @@ class HeroSection extends StatelessWidget {
                     child: Column(
                       children: [
                         Text(
-                          'Turn your smartphone into a professional diagnostic tool. OMION connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
+                          'Turn your smartphone into a professional diagnostic tool. OBDvia AI connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: AppColors.lightStyle,

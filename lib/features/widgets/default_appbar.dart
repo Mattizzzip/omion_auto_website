@@ -200,7 +200,7 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'OMION | auto',
+                      'OBDvia AI',
                       style: TextStyle(
                         color: AppColors.lightStyle,
                         fontSize: isMobile ? 16 : 18,
