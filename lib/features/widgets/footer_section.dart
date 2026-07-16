@@ -1,45 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:omion_auto_website/features/legal/privacy_policy_page.dart';
+import 'package:omion_auto_website/features/legal/terms_of_service_page.dart';
 import 'package:omion_auto_website/features/widgets/store_badge.dart';
 
 import '../theme/app_colors.dart';
-// Импортируйте ваш созданный ранее виджет с кнопками сторов
-// import 'package:your_project/components/store_badges_row.dart';
 
 class FooterSection extends StatelessWidget {
   const FooterSection({super.key});
+
+  void _openPage(BuildContext context, Widget page) {
+    Navigator.of(context).push(
+      MaterialPageRoute<void>(builder: (_) => page),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
         children: [
-
-          // Разделительная тонкая линия с плавным проявлением к центру
           Container(
             width: double.infinity,
-            height: 2, // Фиксированная толщина в 1 пиксель
+            height: 2,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  AppColors.lightStyle.withAlpha(0),  // Полностью прозрачный левый край
-                  AppColors.lightStyle.withAlpha(95), // Видимый полупрозрачный центр
-                  AppColors.lightStyle.withAlpha(0),  // Полностью прозрачный правый край
+                  AppColors.lightStyle.withAlpha(0),
+                  AppColors.lightStyle.withAlpha(95),
+                  AppColors.lightStyle.withAlpha(0),
                 ],
-                // Направление градиента слева направо
                 begin: Alignment.centerLeft,
                 end: Alignment.centerRight,
               ),
             ),
           ),
           const SizedBox(height: 24),
-          // 1. Фирменные кнопки сторов (наш кастомный Stateless-виджет)
-          // Если используете заглушку, можно временно оставить пустые колбэки
           const StoreBadgesRow(
             onAppStoreTap: null,
             onGooglePlayTap: null,
           ),
           const SizedBox(height: 32),
-
-          // 2. Строка копирайта с актуальным годом
           const Text(
             '© 2026 OBDvia AI. All rights reserved.',
             style: TextStyle(
@@ -49,26 +48,18 @@ class FooterSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-
-          // 3. Блок с юридическими ссылками
           Wrap(
-            spacing: 24.0, // Отступ между кнопками по горизонтали
-            runSpacing: 12.0, // Отступ при переносе на мобильных экранах
+            spacing: 24.0,
+            runSpacing: 12.0,
             alignment: WrapAlignment.center,
             children: [
               _buildFooterLink(
                 text: 'Privacy Policy',
-                onTap: () {
-                  // Будущий переход на страницу политики конфиденциальности
-                  print('Navigate to Privacy Policy');
-                },
+                onTap: () => _openPage(context, const PrivacyPolicyPage()),
               ),
               _buildFooterLink(
                 text: 'Terms of Use',
-                onTap: () {
-                  // Будущий переход на страницу пользовательского соглашения
-                  print('Navigate to Terms of Use');
-                },
+                onTap: () => _openPage(context, const TermsOfServicePage()),
               ),
             ],
           ),
