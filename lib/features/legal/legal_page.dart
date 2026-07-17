@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omion_auto_website/app_routes.dart';
 import 'package:omion_auto_website/features/theme/app_colors.dart';
 import 'package:omion_auto_website/features/theme/breakpoints.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -49,7 +50,14 @@ class LegalPage extends StatelessWidget {
         scrolledUnderElevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: AppColors.lightStyle),
-          onPressed: () => Navigator.of(context).maybePop(),
+          onPressed: () {
+            final navigator = Navigator.of(context);
+            if (navigator.canPop()) {
+              navigator.pop();
+            } else {
+              navigator.pushReplacementNamed(AppRoutes.home);
+            }
+          },
         ),
         title: Text(
           title,
