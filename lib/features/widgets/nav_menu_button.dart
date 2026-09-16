@@ -48,7 +48,7 @@ class _NavMenuButtonState extends State<NavMenuButton> {
           duration: const Duration(milliseconds: 400),
           curve: Curves.easeInOut,
           width: widget.isExpanded ? double.infinity : null,
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12.0),
           decoration: BoxDecoration(
             color: _isHovered ? AppColors.lightStyle : AppColors.background,
             borderRadius: widget.borderRadius,

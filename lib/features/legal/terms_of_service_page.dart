@@ -1,88 +1,72 @@
 import 'package:flutter/material.dart';
 import 'package:omion_auto_website/features/legal/legal_page.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 class TermsOfServicePage extends StatelessWidget {
   const TermsOfServicePage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return LegalPage(
-      title: 'Terms of Service',
-      lastUpdated: 'July 16, 2026',
+      title: l10n.termsTitle,
+      lastUpdated: l10n.termsLastUpdated,
       sections: [
         LegalSection(
-          heading: '1. Acceptance of Terms',
+          heading: l10n.termsS1Heading,
           body: [
-            legalParagraph(
-              'By downloading, installing, or using this application (the "App"), you agree to be bound by these Terms of Service. If you do not agree to these terms, do not use the App.',
-            ),
+            legalParagraph(l10n.termsS1Body),
           ],
         ),
         LegalSection(
-          heading: '2. Description of Service',
+          heading: l10n.termsS2Heading,
           body: [
-            legalParagraph(
-              'The App provides vehicle diagnostic tools using the OBD II protocol. To analyze data, the App utilizes local, untrained open-weight Artificial Intelligence models (Gemma 2b and Gemma 4b) downloaded directly from Hugging Face.',
-            ),
+            legalParagraph(l10n.termsS2Body),
           ],
         ),
         LegalSection(
-          heading: '3. App Operation & Internet Requirements',
+          heading: l10n.termsS3Heading,
           body: [
             legalBoldLead(
-              'Local Operation:',
-              'The core vehicle diagnostics and AI analysis perform entirely offline and locally on your device.',
+              l10n.termsS3LocalLead,
+              l10n.termsS3LocalRest,
             ),
             legalBoldLead(
-              'Internet Connection:',
-              'An active internet connection is strictly required only for:',
+              l10n.termsS3InternetLead,
+              l10n.termsS3InternetRest,
             ),
-            legalBullet(
-              'Downloading the AI model weights from Hugging Face upon the initial setup or required updates.',
-            ),
-            legalBullet(
-              'Sending messages through the built-in Feedback Form.',
-            ),
+            legalBullet(l10n.termsS3Bullet1),
+            legalBullet(l10n.termsS3Bullet2),
           ],
         ),
         LegalSection(
-          heading: '4. Third-Party Licenses (Gemma Models)',
+          heading: l10n.termsS4Heading,
           body: [
-            const TextSpan(
-              text:
-                  'The App utilizes Gemma models provided by Google LLC. By using this App, you also acknowledge and agree to comply with the ',
-            ),
-            legalLink('Google Gemma Terms of Use', kGemmaTermsUrl),
-            const TextSpan(
-              text:
-                  '. Downloading these models is governed by ',
-            ),
-            legalLink('Hugging Face’s Terms of Service', kHuggingFaceTermsUrl),
+            TextSpan(text: l10n.termsS4BeforeGemma),
+            legalLink(l10n.termsS4GemmaLink, kGemmaTermsUrl),
+            TextSpan(text: l10n.termsS4Between),
+            legalLink(l10n.termsS4HfLink, kHuggingFaceTermsUrl),
             const TextSpan(text: '.\n\n'),
           ],
         ),
         LegalSection(
-          heading: '5. Disclaimer of Warranties & Limitation of Liability',
+          heading: l10n.termsS5Heading,
           body: [
             legalBoldLead(
-              'For Informational Purposes Only:',
-              'The App is a diagnostic support tool and does not replace professional vehicle maintenance, repair, or expert inspection.',
+              l10n.termsS5InfoLead,
+              l10n.termsS5InfoRest,
             ),
             legalBoldLead(
-              'Use At Your Own Risk:',
-              'The developer is not liable for any damage to your vehicle, your OBD II scanning hardware, or any accidents/safety hazards resulting from or related to the use of the App.',
+              l10n.termsS5RiskLead,
+              l10n.termsS5RiskRest,
             ),
-            legalParagraph(
-              'The App is provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind.',
-            ),
+            legalParagraph(l10n.termsS5AsIs),
           ],
         ),
         LegalSection(
-          heading: '6. Governing Law and Dispute Resolution',
+          heading: l10n.termsS6Heading,
           body: [
-            legalParagraph(
-              'These Terms of Service and any separate agreements shall be governed by, and construed in accordance with, the laws of Georgia, without regard to its conflict of law principles. Any legal action, suit, or proceeding arising out of or relating to these Terms or the use of the App shall be instituted exclusively in the competent courts of Tbilisi, Georgia.',
-            ),
+            legalParagraph(l10n.termsS6Body),
           ],
         ),
       ],

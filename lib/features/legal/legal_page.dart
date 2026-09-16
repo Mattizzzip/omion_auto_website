@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:omion_auto_website/app_routes.dart';
 import 'package:omion_auto_website/features/theme/app_colors.dart';
 import 'package:omion_auto_website/features/theme/breakpoints.dart';
+import 'package:omion_auto_website/features/widgets/language_switcher.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 const kGemmaTermsUrl = 'https://ai.google.dev/gemma/terms';
@@ -41,6 +43,7 @@ class LegalPage extends StatelessWidget {
     final maxWidth = isMobile ? double.infinity : 820.0;
     final titleSize = isMobile ? 28.0 : 36.0;
     final horizontal = isMobile ? 20.0 : 24.0;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -67,6 +70,10 @@ class LegalPage extends StatelessWidget {
             fontWeight: FontWeight.w600,
           ),
         ),
+        actions: [
+          LanguageSwitcher(compact: isMobile),
+          SizedBox(width: isMobile ? 12 : 20),
+        ],
       ),
       body: SelectionArea(
         child: SingleChildScrollView(
@@ -88,7 +95,7 @@ class LegalPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 12),
                   Text(
-                    'Last Updated: $lastUpdated',
+                    l10n.legalLastUpdated(lastUpdated),
                     style: TextStyle(
                       color: AppColors.lightStyle.withValues(alpha: 0.55),
                       fontSize: 14,

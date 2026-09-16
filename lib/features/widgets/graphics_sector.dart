@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:omion_auto_website/features/widgets/technical_charts_painter.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/breakpoints.dart';
@@ -58,6 +59,7 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
         final titleSize = isDesktop ? 40.0 : 28.0;
         final bodySize = isDesktop ? 16.0 : 15.0;
         final chartHeight = isDesktop ? 400.0 : 260.0;
+        final l10n = AppLocalizations.of(context);
 
         // Контент слева (Текст)
         Widget textContent = FadeTransition(
@@ -67,7 +69,7 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Real-Time Automotive\nTelemetry & Data\nProcessing',
+                l10n.graphicsTitle,
                 style: TextStyle(
                   color: AppColors.lightStyle,
                   fontSize: titleSize,
@@ -77,7 +79,7 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
               ),
               const SizedBox(height: 24),
               Text(
-                "Track sensors, valve, and fuel trim instantly. Our system processes live OBD-II streams with minimal lag, giving you crystal-clear insights into your engine's performance right as you drive.",
+                l10n.graphicsBody1,
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(90),
                   fontSize: bodySize,
@@ -86,7 +88,7 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
               ),
               const SizedBox(height: 16),
               Text(
-                'From tracking Short Term Fuel Trims to monitoring engine load and coolant temperatures — capture critical anomalies before they turn into costly repairs.',
+                l10n.graphicsBody2,
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(90),
                   fontSize: bodySize,
@@ -104,6 +106,8 @@ class _GraphicsSectorState extends State<GraphicsSector> with SingleTickerProvid
             return CustomPaint(
               painter: TechnicalChartsPainter(
                 progress: _chartProgressAnimation.value,
+                fuelTrimLabel: l10n.chartFuelTrimLabel,
+                valueLabel: l10n.chartValueLabel,
               ),
               child: SizedBox(
                 width: double.infinity,

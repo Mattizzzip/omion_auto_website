@@ -3,6 +3,7 @@ import 'package:omion_auto_website/app_routes.dart';
 import 'package:omion_auto_website/features/legal/legal_page.dart';
 import 'package:omion_auto_website/features/theme/breakpoints.dart';
 import 'package:omion_auto_website/features/widgets/store_badge.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 import '../theme/app_colors.dart';
 
@@ -15,6 +16,7 @@ class FooterSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isMobile = isMobileLayout(context);
+    final l10n = AppLocalizations.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -35,10 +37,7 @@ class FooterSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 32),
-        const StoreBadgesRow(
-          onAppStoreTap: null,
-          onGooglePlayTap: null,
-        ),
+        const StoreBadgesRow(),
         const SizedBox(height: 40),
         if (isMobile)
           Column(
@@ -64,7 +63,7 @@ class FooterSection extends StatelessWidget {
         Divider(color: AppColors.lightStyle.withValues(alpha: 0.18), height: 1),
         const SizedBox(height: 20),
         Text(
-          '© 2026 ANDREI OSIPAU. All rights reserved.',
+          l10n.footerCopyright,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: AppColors.lightStyle.withValues(alpha: 0.55),
@@ -89,12 +88,13 @@ class _ContactsColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
-          'Contacts',
-          style: TextStyle(
+        Text(
+          l10n.footerContacts,
+          style: const TextStyle(
             color: AppColors.lightStyle,
             fontSize: 28,
             fontWeight: FontWeight.w700,
@@ -103,7 +103,7 @@ class _ContactsColumn extends StatelessWidget {
         ),
         const SizedBox(height: 20),
         Text(
-          'Email',
+          l10n.footerEmail,
           style: TextStyle(
             color: AppColors.lightStyle.withValues(alpha: 0.55),
             fontSize: 13,
@@ -120,7 +120,7 @@ class _ContactsColumn extends StatelessWidget {
         ),
         const SizedBox(height: 28),
         _HoverLink(
-          text: 'Privacy Policy',
+          text: l10n.footerPrivacyPolicy,
           color: AppColors.lightStyle.withValues(alpha: 0.75),
           decorationColor: AppColors.lightStyle.withValues(alpha: 0.35),
           fontSize: 14,
@@ -128,7 +128,7 @@ class _ContactsColumn extends StatelessWidget {
         ),
         const SizedBox(height: 12),
         _HoverLink(
-          text: 'Terms of Service / EULA',
+          text: l10n.footerTerms,
           color: AppColors.lightStyle.withValues(alpha: 0.75),
           decorationColor: AppColors.lightStyle.withValues(alpha: 0.35),
           fontSize: 14,
@@ -145,6 +145,7 @@ class _LegalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context);
     return Container(
       width: double.infinity,
       padding: const EdgeInsets.all(24),
@@ -152,33 +153,32 @@ class _LegalCard extends StatelessWidget {
         color: AppColors.cardBg,
         borderRadius: BorderRadius.circular(16),
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Individual Entrepreneur ANDREI OSIPAU',
-            style: TextStyle(
+            l10n.footerEntrepreneur,
+            style: const TextStyle(
               color: AppColors.lightStyle,
               fontSize: 16,
               fontWeight: FontWeight.w700,
               height: 1.35,
             ),
           ),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _LegalField(
-            label: 'Business ID / Tax Number',
+            label: l10n.footerBusinessId,
             value: '302373429',
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _LegalField(
-            label: 'Country of Registration',
-            value: 'Georgia',
+            label: l10n.footerCountry,
+            value: l10n.footerCountryValue,
           ),
-          SizedBox(height: 16),
+          const SizedBox(height: 16),
           _LegalField(
-            label: 'Legal Registration Address',
-            value:
-                'Georgia, Tbilisi city, Chugureti district, Tsotne Dadiani street N 7, commercial space Nb229, floor 2',
+            label: l10n.footerAddress,
+            value: l10n.footerAddressValue,
           ),
         ],
       ),

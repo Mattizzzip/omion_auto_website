@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/breakpoints.dart';
@@ -18,6 +19,7 @@ class ErrorCardsStack extends StatelessWidget {
     final scale = isMobile ? 0.82 : 1.0;
     const double cardWidth = 320.0;
     const double cardHeight = 160.0;
+    final l10n = AppLocalizations.of(context);
 
     return AnimatedBuilder(
       animation: animationProgress,
@@ -39,10 +41,12 @@ class ErrorCardsStack extends StatelessWidget {
                   tagColor: AppColors.bodyTag,
                   textColor: AppColors.background,
                   btnColor: AppColors.bodyTag,
-                  categoryName: 'Body',
-                  errorTitle: 'Climate Control Failure',
+                  categoryName: l10n.errorCategoryBody,
+                  errorTitle: l10n.errorTitleClimate,
                   errorCode: 'B0100',
                   errorIcon: 'images/error_images/b_type_error.svg',
+                  searchLabel: l10n.errorSearch,
+                  askAiLabel: l10n.errorAskAi,
                 ),
                 _buildAppCard(
                   index: 2,
@@ -52,10 +56,12 @@ class ErrorCardsStack extends StatelessWidget {
                   tagColor: AppColors.chassisTag,
                   textColor: AppColors.background,
                   btnColor: AppColors.chassisTag,
-                  categoryName: 'Chassis',
-                  errorTitle: 'ABS Sensor Circuit Malfunction',
+                  categoryName: l10n.errorCategoryChassis,
+                  errorTitle: l10n.errorTitleAbs,
                   errorCode: 'C0035',
                   errorIcon: 'images/error_images/c_type_error.svg',
+                  searchLabel: l10n.errorSearch,
+                  askAiLabel: l10n.errorAskAi,
                 ),
                 _buildAppCard(
                   index: 1,
@@ -65,11 +71,13 @@ class ErrorCardsStack extends StatelessWidget {
                   tagColor: AppColors.transmissionTag,
                   textColor: AppColors.background,
                   btnColor: AppColors.transmissionTag,
-                  categoryName: 'Network & Wiring',
-                  errorTitle: 'O2 Sensor Circuit Slow Response\n(Bank 1, Sensor 1)',
+                  categoryName: l10n.errorCategoryNetwork,
+                  errorTitle: l10n.errorTitleO2,
                   errorCode: 'P0133',
                   isForeground: true,
                   errorIcon: 'images/error_images/p_type_error.svg',
+                  searchLabel: l10n.errorSearch,
+                  askAiLabel: l10n.errorAskAi,
                 ),
                 _buildAppCard(
                   index: 0,
@@ -79,11 +87,13 @@ class ErrorCardsStack extends StatelessWidget {
                   tagColor: AppColors.networkTag,
                   textColor: AppColors.background,
                   btnColor: AppColors.networkTag,
-                  categoryName: 'Network & Wiring',
-                  errorTitle: 'CAN Communication Error',
+                  categoryName: l10n.errorCategoryNetwork,
+                  errorTitle: l10n.errorTitleCan,
                   errorCode: 'U0300',
                   isForeground: true,
                   errorIcon: 'images/error_images/u_type_error.svg',
+                  searchLabel: l10n.errorSearch,
+                  askAiLabel: l10n.errorAskAi,
                 ),
               ],
             ),
@@ -105,6 +115,8 @@ class ErrorCardsStack extends StatelessWidget {
     required String errorTitle,
     required String errorCode,
     required String errorIcon,
+    required String searchLabel,
+    required String askAiLabel,
     bool isForeground = false,
   }) {
     final double offsetX = -24.0 * index * animationProgress.value;
@@ -150,43 +162,47 @@ class ErrorCardsStack extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-                            decoration: BoxDecoration(
-                              color: tagColor,
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              categoryName,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontSize: 11,
-                                fontWeight: FontWeight.bold,
+                      Flexible(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                              decoration: BoxDecoration(
+                                color: tagColor,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                categoryName,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          const SizedBox(height: 8),
-                          Text(
-                            errorTitle,
-                            style: TextStyle(
-                              color: textColor,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w800,
+                            const SizedBox(height: 8),
+                            Text(
+                              errorTitle,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                color: textColor,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w800,
+                              ),
                             ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            errorCode,
-                            style: TextStyle(
-                              color: textColor.withOpacity(0.6),
-                              fontSize: 12,
-                              fontWeight: FontWeight.w500,
+                            const SizedBox(height: 2),
+                            Text(
+                              errorCode,
+                              style: TextStyle(
+                                color: textColor.withValues(alpha: 0.6),
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       Row(
                         children: [
@@ -197,10 +213,10 @@ class ErrorCardsStack extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Row(
-                              children: const [
-                                Icon(Icons.search, size: 14, color: Colors.white),
-                                SizedBox(width: 4),
-                                Text('Search', style: TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
+                              children: [
+                                const Icon(Icons.search, size: 14, color: Colors.white),
+                                const SizedBox(width: 4),
+                                Text(searchLabel, style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold)),
                               ],
                             ),
                           ),
@@ -216,7 +232,7 @@ class ErrorCardsStack extends StatelessWidget {
                               children: [
                                 Icon(Icons.auto_awesome, size: 12, color: textColor),
                                 const SizedBox(width: 4),
-                                Text('Ask AI', style: TextStyle(color: textColor, fontSize: 11, fontWeight: FontWeight.bold)),
+                                Text(askAiLabel, style: TextStyle(color: textColor, fontSize: 11, fontWeight: FontWeight.bold)),
                               ],
                             ),
                           ),

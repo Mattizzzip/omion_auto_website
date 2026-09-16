@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 import '../theme/app_colors.dart';
 import '../theme/breakpoints.dart';
@@ -9,6 +10,29 @@ class KeyFeaturesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = !isMobileLayout(context);
+    final l10n = AppLocalizations.of(context);
+    final features = [
+      _FeatureData(
+        title: l10n.featureClearErrorsTitle,
+        subTitle: l10n.featureClearErrorsBody,
+        icon: Icons.gpp_good_outlined,
+      ),
+      _FeatureData(
+        title: l10n.featureExportReportsTitle,
+        subTitle: l10n.featureExportReportsBody,
+        icon: Icons.assignment_outlined,
+      ),
+      _FeatureData(
+        title: l10n.featureLiveMonitoringTitle,
+        subTitle: l10n.featureLiveMonitoringBody,
+        icon: Icons.speed_outlined,
+      ),
+      _FeatureData(
+        title: l10n.featureOfflineAiTitle,
+        subTitle: l10n.featureOfflineAiBody,
+        icon: Icons.psychology_outlined,
+      ),
+    ];
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: 1.0),
@@ -26,7 +50,7 @@ class KeyFeaturesSection extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'KEY FEATURES',
+            l10n.featuresTitle,
             style: TextStyle(
               color: Colors.white,
               fontSize: isDesktop ? 28 : 22,
@@ -36,33 +60,50 @@ class KeyFeaturesSection extends StatelessWidget {
           ),
           SizedBox(height: isDesktop ? 50 : 32),
           isDesktop
-              ? const Row(
+              ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined)),
-                    SizedBox(width: 16),
-                    Expanded(child: _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined)),
-                    SizedBox(width: 16),
-                    Expanded(child: _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined)),
-                    SizedBox(width: 16),
-                    Expanded(child: _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined)),
+                    for (var i = 0; i < features.length; i++) ...[
+                      if (i > 0) const SizedBox(width: 16),
+                      Expanded(
+                        child: _FeatureCard(
+                          title: features[i].title,
+                          subTitle: features[i].subTitle,
+                          icon: features[i].icon,
+                        ),
+                      ),
+                    ],
                   ],
                 )
-              : const Column(
+              : Column(
                   children: [
-                    _FeatureCard(title: 'CLEAR ERRORS', subTitle: 'Instantly read, decode, and clear vehicle trouble codes without mechanic help.', icon: Icons.gpp_good_outlined, isMobile: true),
-                    SizedBox(height: 16),
-                    _FeatureCard(title: 'EXPORT REPORTS', subTitle: 'Generate and share comprehensive PDF summaries of your car health.', icon: Icons.assignment_outlined, isMobile: true),
-                    SizedBox(height: 16),
-                    _FeatureCard(title: 'LIVE MONITORING', subTitle: 'Track critical engine parameters and sensor graphics in real time.', icon: Icons.speed_outlined, isMobile: true),
-                    SizedBox(height: 16),
-                    _FeatureCard(title: 'OFFLINE AI', subTitle: 'Get autonomous diagnostic assistance powered by a built-in AI assistant.', icon: Icons.psychology_outlined, isMobile: true),
+                    for (var i = 0; i < features.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 16),
+                      _FeatureCard(
+                        title: features[i].title,
+                        subTitle: features[i].subTitle,
+                        icon: features[i].icon,
+                        isMobile: true,
+                      ),
+                    ],
                   ],
                 ),
         ],
       ),
     );
   }
+}
+
+class _FeatureData {
+  final String title;
+  final String subTitle;
+  final IconData icon;
+
+  const _FeatureData({
+    required this.title,
+    required this.subTitle,
+    required this.icon,
+  });
 }
 
 class _FeatureCard extends StatefulWidget {

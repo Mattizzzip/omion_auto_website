@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:omion_auto_website/features/theme/app_colors.dart';
 import 'package:omion_auto_website/features/theme/breakpoints.dart';
+import 'package:omion_auto_website/features/widgets/language_switcher.dart';
 import 'package:omion_auto_website/features/widgets/nav_menu_button.dart';
 import 'package:omion_auto_website/features/widgets/scroll_utils.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 class DefaultAppbar extends StatefulWidget implements PreferredSizeWidget {
   final ScrollController scrollController;
@@ -87,7 +89,8 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
 
     _menuController.forward(from: 0);
     _menuOverlay = OverlayEntry(
-      builder: (context) {
+      builder: (_) {
+        final l10n = AppLocalizations.of(context);
         return Stack(
           children: [
             Positioned.fill(
@@ -114,7 +117,7 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         NavMenuButton(
-                          title: 'How it works',
+                          title: l10n.navHowItWorks,
                           targetKey: widget.howItWorksKey,
                           onNavigate: _closeMobileMenu,
                           isExpanded: true,
@@ -124,21 +127,21 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
                           ),
                         ),
                         NavMenuButton(
-                          title: 'Features',
+                          title: l10n.navFeatures,
                           targetKey: widget.featuresKey,
                           onNavigate: _closeMobileMenu,
                           isExpanded: true,
                           borderRadius: BorderRadius.zero,
                         ),
                         NavMenuButton(
-                          title: 'Contacts',
+                          title: l10n.navContacts,
                           targetKey: widget.footerKey,
                           onNavigate: _closeMobileMenu,
                           isExpanded: true,
                           borderRadius: BorderRadius.zero,
                         ),
                         NavMenuButton(
-                          title: 'Download',
+                          title: l10n.navDownload,
                           targetKey: widget.downloadKey,
                           onNavigate: _closeMobileMenu,
                           isExpanded: true,
@@ -175,9 +178,16 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    _menuOverlay?.markNeedsBuild();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final isMobile = isMobileLayout(context);
     final isMenuOpen = _menuOverlay != null;
+    final l10n = AppLocalizations.of(context);
 
     return AppBar(
       backgroundColor: AppColors.background,
@@ -187,32 +197,59 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
         padding: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 20),
         child: Row(
           children: [
-            GestureDetector(
-              onTap: _scrollToHome,
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    SvgPicture.asset(
-                      'icons/mini_car.svg',
-                      width: isMobile ? 40 : 64,
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      'OBDvia AI',
-                      style: TextStyle(
-                        color: AppColors.lightStyle,
-                        fontSize: isMobile ? 16 : 18,
-                        fontWeight: FontWeight.bold,
+            Flexible(
+              child: GestureDetector(
+                onTap: _scrollToHome,
+                child: MouseRegion(
+                  cursor: SystemMouseCursors.click,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SvgPicture.asset(
+                        'icons/mini_car.svg',
+                        width: isMobile ? 40 : 64,
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      Flexible(
+                        child: Text(
+                          'OBDvia AI',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: AppColors.lightStyle,
+                            fontSize: isMobile ? 16 : 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
             const Spacer(),
             if (isMobile)
+              const LanguageSwitcher(compact: true)
+            else
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const LanguageSwitcher(),
+                    const SizedBox(width: 12),
+                    NavMenuButton(title: l10n.navHowItWorks, targetKey: widget.howItWorksKey),
+                    const SizedBox(width: 4),
+                    NavMenuButton(title: l10n.navFeatures, targetKey: widget.featuresKey),
+                    const SizedBox(width: 4),
+                    NavMenuButton(title: l10n.navContacts, targetKey: widget.footerKey),
+                    const SizedBox(width: 4),
+                    NavMenuButton(title: l10n.navDownload, targetKey: widget.downloadKey),
+                  ],
+                ),
+              ),
+            if (isMobile) ...[
+              const SizedBox(width: 4),
               IconButton(
                 key: _burgerKey,
                 icon: Icon(
@@ -220,15 +257,7 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
                   color: AppColors.lightStyle,
                 ),
                 onPressed: _toggleMobileMenu,
-              )
-            else ...[
-              NavMenuButton(title: 'How it works', targetKey: widget.howItWorksKey),
-              const SizedBox(width: 8),
-              NavMenuButton(title: 'Features', targetKey: widget.featuresKey),
-              const SizedBox(width: 8),
-              NavMenuButton(title: 'Contacts', targetKey: widget.footerKey),
-              const SizedBox(width: 8),
-              NavMenuButton(title: 'Download', targetKey: widget.downloadKey),
+              ),
             ],
           ],
         ),

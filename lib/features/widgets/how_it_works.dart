@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 import '../theme/breakpoints.dart';
 
@@ -8,6 +9,33 @@ class HowItWorksSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDesktop = !isMobileLayout(context);
+    final l10n = AppLocalizations.of(context);
+    final steps = [
+      _StepData(
+        number: '1',
+        title: l10n.howItWorksStep1Title,
+        subTitle: l10n.howItWorksStep1Body,
+        icon: Icons.directions_car,
+      ),
+      _StepData(
+        number: '2',
+        title: l10n.howItWorksStep2Title,
+        subTitle: l10n.howItWorksStep2Body,
+        icon: Icons.bluetooth_searching,
+      ),
+      _StepData(
+        number: '3',
+        title: l10n.howItWorksStep3Title,
+        subTitle: l10n.howItWorksStep3Body,
+        icon: Icons.fact_check_outlined,
+      ),
+      _StepData(
+        number: '4',
+        title: l10n.howItWorksStep4Title,
+        subTitle: l10n.howItWorksStep4Body,
+        icon: Icons.psychology_outlined,
+      ),
+    ];
 
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(begin: 0.0, end: 1.0),
@@ -25,7 +53,7 @@ class HowItWorksSection extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            'HOW IT WORKS',
+            l10n.howItWorksTitle,
             style: TextStyle(
               color: Colors.white,
               fontSize: isDesktop ? 28 : 22,
@@ -35,30 +63,52 @@ class HowItWorksSection extends StatelessWidget {
           ),
           const SizedBox(height: 12),
           isDesktop
-              ? const Row(
+              ? Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Expanded(child: _StepCard(number: '1', title: 'CONNECT TO CAR', subTitle: 'Plug your ELM327 scanner directly into the vehicle\'s OBD2 port.', icon: Icons.directions_car)),
-                    Expanded(child: _StepCard(number: '2', title: 'PAIR WITH PHONE', subTitle: 'Connect via Wi-Fi or BT. Note: iOS does not support BT Classic.', icon: Icons.bluetooth_searching)),
-                    Expanded(child: _StepCard(number: '3', title: 'SELECT YOUR VEHICLE', subTitle: 'Specify your car model for accurate diagnostics interpretation.', icon: Icons.fact_check_outlined)),
-                    Expanded(child: _StepCard(number: '4', title: 'OFFLINE AI ASSISTANT', subTitle: 'Built-in autonomous 2-5 GB AI model that works entirely without internet.', icon: Icons.psychology_outlined)),
+                    for (final step in steps)
+                      Expanded(
+                        child: _StepCard(
+                          number: step.number,
+                          title: step.title,
+                          subTitle: step.subTitle,
+                          icon: step.icon,
+                        ),
+                      ),
                   ],
                 )
               : Column(
                   children: [
-                    _StepCard(number: '1', title: 'CONNECT TO CAR', subTitle: 'Plug your ELM327 scanner directly into the vehicle\'s OBD2 port.', icon: Icons.directions_car, isMobile: true),
-                    const SizedBox(height: 40),
-                    _StepCard(number: '2', title: 'PAIR WITH PHONE', subTitle: 'Connect via Wi-Fi or BT. Note: iOS does not support BT Classic.', icon: Icons.bluetooth_searching, isMobile: true),
-                    const SizedBox(height: 40),
-                    _StepCard(number: '3', title: 'SELECT YOUR VEHICLE', subTitle: 'Specify your car model for accurate diagnostics interpretation.', icon: Icons.fact_check_outlined, isMobile: true),
-                    const SizedBox(height: 40),
-                    _StepCard(number: '4', title: 'OFFLINE AI ASSISTANT', subTitle: 'Built-in autonomous 2-5 GB AI model that works entirely without internet.', icon: Icons.psychology_outlined, isMobile: true),
+                    for (var i = 0; i < steps.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 40),
+                      _StepCard(
+                        number: steps[i].number,
+                        title: steps[i].title,
+                        subTitle: steps[i].subTitle,
+                        icon: steps[i].icon,
+                        isMobile: true,
+                      ),
+                    ],
                   ],
                 ),
         ],
       ),
     );
   }
+}
+
+class _StepData {
+  final String number;
+  final String title;
+  final String subTitle;
+  final IconData icon;
+
+  const _StepData({
+    required this.number,
+    required this.title,
+    required this.subTitle,
+    required this.icon,
+  });
 }
 
 class _StepCard extends StatelessWidget {

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:omion_auto_website/features/theme/app_colors.dart';
 import 'package:omion_auto_website/features/theme/breakpoints.dart';
 import 'package:omion_auto_website/features/widgets/store_badge.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 
 class HeroSection extends StatelessWidget {
   final GlobalKey? headlineKey;
@@ -16,6 +17,7 @@ class HeroSection extends StatelessWidget {
     final logoWidth = isMobile ? screenWidth * 0.85 : 800.0;
     final headlineSize = isMobile ? 24.0 : 32.0;
     final bodySize = isMobile ? 16.0 : 18.0;
+    final l10n = AppLocalizations.of(context);
 
     return Container(
       width: double.infinity,
@@ -48,7 +50,7 @@ class HeroSection extends StatelessWidget {
             SizedBox(height: isMobile ? 24 : 40),
             Text(
               key: headlineKey,
-              'Smart Vehicle Telematics in Your Pocket',
+              l10n.heroHeadline,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: AppColors.lightStyle,
@@ -63,7 +65,7 @@ class HeroSection extends StatelessWidget {
               Column(
                 children: [
                   Text(
-                    'Turn your smartphone into a professional diagnostic tool. OBDvia AI connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
+                    l10n.heroBody,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: AppColors.lightStyle,
@@ -79,13 +81,13 @@ class HeroSection extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset('assets/images/phone_hero.png', width: 128),
+                  const _HeroPhoneImage(width: 180),
                   const SizedBox(width: 16),
                   Expanded(
                     child: Column(
                       children: [
                         Text(
-                          'Turn your smartphone into a professional diagnostic tool. OBDvia AI connects directly to your car, delivering real-time data, performance metrics, and comprehensive health reports in a clean, intuitive interface.',
+                          l10n.heroBody,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: AppColors.lightStyle,
@@ -98,11 +100,44 @@ class HeroSection extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 16),
-                  Image.asset('assets/images/phone_hero.png', width: 128),
+                  const _HeroPhoneImage(width: 180),
                 ],
               ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class _HeroPhoneImage extends StatelessWidget {
+  final double width;
+
+  const _HeroPhoneImage({required this.width});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: width,
+      alignment: Alignment.topCenter,
+      foregroundDecoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+          stops: const [0.0, 0.42, 0.48, 0.5, 1.0],
+          colors: [
+            Colors.transparent,
+            Colors.transparent,
+            AppColors.background.withValues(alpha: 0.55),
+            AppColors.background,
+            AppColors.background,
+          ],
+        ),
+      ),
+      child: Image.asset(
+        'assets/images/phone_hero.png',
+        width: width,
+        fit: BoxFit.contain,
       ),
     );
   }

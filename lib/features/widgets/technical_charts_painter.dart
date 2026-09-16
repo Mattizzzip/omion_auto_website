@@ -5,8 +5,14 @@ import '../theme/app_colors.dart';
 
 class TechnicalChartsPainter extends CustomPainter {
   final double progress;
+  final String fuelTrimLabel;
+  final String valueLabel;
 
-  TechnicalChartsPainter({required this.progress});
+  TechnicalChartsPainter({
+    required this.progress,
+    required this.fuelTrimLabel,
+    required this.valueLabel,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -112,10 +118,39 @@ class TechnicalChartsPainter extends CustomPainter {
     canvas.drawCircle(Offset(x, y), 10.0, markerLightPaint);
 
     // 2. Рисуем технологичный островок (плашку с текстом) чуть выше и правее точки
-    final double islandWidth = 128.0;
-    final double islandHeight = 55.0;
-    final double offsetX = 20.0; // Смещение вправо от точки
-    final double offsetY = -65.0; // Смещение вверх от точки (чтобы не перекрывать график)
+    final textPainterTitle = TextPainter(
+      text: TextSpan(
+        text: fuelTrimLabel,
+        style: TextStyle(
+          color: AppColors.lightStyle.withOpacity(opacity * 0.6),
+          fontSize: 11,
+          fontFamily: 'Roboto',
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    final textPainterValue = TextPainter(
+      text: TextSpan(
+        text: valueLabel,
+        style: TextStyle(color: AppColors.lightStyle.withOpacity(opacity * 0.5), fontSize: 13),
+        children: [
+          TextSpan(
+            text: '5.5%',
+            style: TextStyle(color: AppColors.chartOrange.withOpacity(opacity), fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+
+    final double islandWidth = (textPainterTitle.width > textPainterValue.width
+            ? textPainterTitle.width
+            : textPainterValue.width) +
+        24.0;
+    const double islandHeight = 55.0;
+    const double offsetX = 20.0;
+    const double offsetY = -65.0;
 
     final Rect islandRect = Rect.fromLTWH(x + offsetX, y + offsetY, islandWidth, islandHeight);
     final RRect roundedIsland = RRect.fromRectAndRadius(islandRect, const Radius.circular(6.0));
@@ -134,33 +169,6 @@ class TechnicalChartsPainter extends CustomPainter {
     canvas.drawRRect(roundedIsland, islandBorderPaint);
 
     // 3. Выводим текст внутри островка
-    final textPainterTitle = TextPainter(
-      text: TextSpan(
-        text: 'Short Term Fuel Trim:',
-        style: TextStyle(
-          color: AppColors.lightStyle.withOpacity(opacity * 0.6),
-          fontSize: 11,
-          fontFamily: 'Roboto', // Можно заменить на ваш системный шрифт
-        ),
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    final textPainterValue = TextPainter(
-      text: TextSpan(
-        text: 'value: ',
-        style: TextStyle(color: AppColors.lightStyle.withOpacity(opacity * 0.5), fontSize: 13),
-        children: [
-          TextSpan(
-            text: '5.5%',
-            style: TextStyle(color: AppColors.chartOrange.withOpacity(opacity), fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-      textDirection: TextDirection.ltr,
-    )..layout();
-
-    // Размещаем текст с отступами внутри отрисованной плашки
     textPainterTitle.paint(canvas, Offset(x + offsetX + 12, y + offsetY + 10));
     textPainterValue.paint(canvas, Offset(x + offsetX + 12, y + offsetY + 28));
   }
@@ -212,6 +220,8 @@ class TechnicalChartsPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant TechnicalChartsPainter oldDelegate) {
-    return oldDelegate.progress != progress;
+    return oldDelegate.progress != progress ||
+        oldDelegate.fuelTrimLabel != fuelTrimLabel ||
+        oldDelegate.valueLabel != valueLabel;
   }
 }

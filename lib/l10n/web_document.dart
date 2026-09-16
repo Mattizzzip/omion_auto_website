@@ -1,0 +1,1 @@
+void syncWebDocumentLocale(String languageCode) {}

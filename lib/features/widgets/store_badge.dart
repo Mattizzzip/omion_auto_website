@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:omion_auto_website/features/legal/legal_page.dart';
 
 import '../theme/breakpoints.dart';
 
+const kAppStoreUrl =
+    'https://apps.apple.com/us/app/obdvia-ai-smart-car-scanning/id6791101467';
+
+const kAppGalleryUrl = 'https://appgallery.huawei.ru/app/C118696683';
+
 class StoreBadgesRow extends StatelessWidget {
   final VoidCallback? onAppStoreTap;
-  final VoidCallback? onGooglePlayTap;
+  final VoidCallback? onAppGalleryTap;
 
   const StoreBadgesRow({
     super.key,
     this.onAppStoreTap,
-    this.onGooglePlayTap,
+    this.onAppGalleryTap,
   });
 
   @override
@@ -26,12 +32,12 @@ class StoreBadgesRow extends StatelessWidget {
         _StoreSvgButton(
           assetPath: 'assets/icons/download_on_the_app_store_badge.svg',
           height: badgeHeight,
-          onTap: onAppStoreTap,
+          onTap: onAppStoreTap ?? () => openExternalUrl(kAppStoreUrl),
         ),
         _StoreSvgButton(
-          assetPath: 'assets/icons/google_play_store_badge.svg',
+          assetPath: 'assets/icons/explore_it_on_appgallery_badge.svg',
           height: badgeHeight,
-          onTap: onGooglePlayTap,
+          onTap: onAppGalleryTap ?? () => openExternalUrl(kAppGalleryUrl),
         ),
       ],
     );

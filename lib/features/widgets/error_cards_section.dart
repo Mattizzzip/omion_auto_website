@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:omion_auto_website/l10n/app_localizations.dart';
 import '../theme/app_colors.dart';
 import '../theme/breakpoints.dart';
 import 'error_cards_stack.dart';
@@ -54,8 +55,8 @@ class _ErrorCardsSectionState extends State<ErrorCardsSection> with SingleTicker
         final bool isDesktop = !isMobileLayout(context);
         final titleSize = isDesktop ? 40.0 : 26.0;
         final bodySize = isDesktop ? 16.0 : 15.0;
+        final l10n = AppLocalizations.of(context);
 
-        // Текст на английском согласно стандартам OBD II
         Widget textContent = FadeTransition(
           opacity: _textFadeAnimation,
           child: Column(
@@ -63,7 +64,7 @@ class _ErrorCardsSectionState extends State<ErrorCardsSection> with SingleTicker
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Built-In OBD II Fault Code Directory',
+                l10n.errorDirectoryTitle,
                 style: TextStyle(
                   color: AppColors.lightStyle,
                   fontSize: titleSize,
@@ -74,7 +75,7 @@ class _ErrorCardsSectionState extends State<ErrorCardsSection> with SingleTicker
               ),
               const SizedBox(height: 24),
               Text(
-                'Never guess what a Check Engine light means again. Our built-in database is fully compliant with universal OBD II standards, containing thousands of diagnostic trouble codes.',
+                l10n.errorDirectoryBody1,
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(128),
                   fontSize: bodySize,
@@ -83,7 +84,7 @@ class _ErrorCardsSectionState extends State<ErrorCardsSection> with SingleTicker
               ),
               const SizedBox(height: 16),
               Text(
-                'Instantly lookup powertrain (P), body (B), chassis (C), and network (U) codes directly on your device. Get clear, professional-grade descriptions and immediate mechanical insights.',
+                l10n.errorDirectoryBody2,
                 style: TextStyle(
                   color: AppColors.lightStyle.withAlpha(128),
                   fontSize: bodySize,
