@@ -43,7 +43,7 @@ class HeroSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(
-              'icons/car_logo.svg',
+              'assets/icons/car_logo.svg',
               width: logoWidth,
               fit: BoxFit.contain,
             ),

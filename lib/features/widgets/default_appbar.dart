@@ -206,7 +206,7 @@ class _DefaultAppbarState extends State<DefaultAppbar> with SingleTickerProvider
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       SvgPicture.asset(
-                        'icons/mini_car.svg',
+                        'assets/icons/mini_car.svg',
                         width: isMobile ? 40 : 64,
                       ),
                       const SizedBox(width: 10),

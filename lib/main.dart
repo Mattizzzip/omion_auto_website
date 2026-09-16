@@ -53,7 +53,8 @@ class _MyAppState extends State<MyApp> {
         listenable: _localeController,
         builder: (context, _) {
           return MaterialApp(
-            onGenerateTitle: (context) => AppLocalizations.of(context).appTitle,
+            onGenerateTitle: (context) =>
+                lookupAppLocalizations(_localeController.locale).appTitle,
             debugShowCheckedModeBanner: false,
             locale: _localeController.locale,
             supportedLocales: LocaleController.supportedLocales,
