@@ -437,7 +437,7 @@ abstract class AppLocalizations {
   /// No description provided for @privacyLastUpdated.
   ///
   /// In en, this message translates to:
-  /// **'July 16, 2026'**
+  /// **'September 16, 2026'**
   String get privacyLastUpdated;
 
   /// No description provided for @privacyS1Heading.
@@ -602,6 +602,90 @@ abstract class AppLocalizations {
   /// **'We implement reasonable technical measures to secure the text data you submit through the Feedback Form. However, please note that no method of transmission over the internet is 100% secure.'**
   String get privacyS5Body;
 
+  /// No description provided for @privacyS6Heading.
+  ///
+  /// In en, this message translates to:
+  /// **'6. In-App Purchases, Subscriptions, and Premium'**
+  String get privacyS6Heading;
+
+  /// No description provided for @privacyS6Intro.
+  ///
+  /// In en, this message translates to:
+  /// **'OBDvia offers optional Premium access through in-app purchases processed by platform stores, not by us directly.'**
+  String get privacyS6Intro;
+
+  /// No description provided for @privacyS6AppleLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple App Store (iOS).'**
+  String get privacyS6AppleLead;
+
+  /// No description provided for @privacyS6AppleRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly and monthly Premium plans are auto-renewable subscriptions. Lifetime Premium is a one-time (non-consumable) purchase. Payment, billing, and refund eligibility are handled by Apple under Apple\'s terms and privacy policy. We do not collect or store your payment card or bank details.'**
+  String get privacyS6AppleRest;
+
+  /// No description provided for @privacyS6GoogleLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Google Play (Android).'**
+  String get privacyS6GoogleLead;
+
+  /// No description provided for @privacyS6GoogleRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Where available, Premium may be offered through Google Play billing (including third-party subscription management tools we use to validate purchases). Payment and refunds are handled by Google (and its policies). We do not receive your full payment credentials.'**
+  String get privacyS6GoogleRest;
+
+  /// No description provided for @privacyS6DataLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Data we process for Premium.'**
+  String get privacyS6DataLead;
+
+  /// No description provided for @privacyS6DataRest.
+  ///
+  /// In en, this message translates to:
+  /// **'To unlock features, the app may store Premium entitlement status (e.g. active plan, expiry, or lifetime flag) locally on your device using secure storage. We do not use this information for advertising or cross-app tracking. We do not operate our own billing server for vehicle or diagnostic data.'**
+  String get privacyS6DataRest;
+
+  /// No description provided for @privacyS6CancelLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancellation.'**
+  String get privacyS6CancelLead;
+
+  /// No description provided for @privacyS6CancelRest.
+  ///
+  /// In en, this message translates to:
+  /// **'You can manage or cancel subscriptions in your device account settings (for example: iOS — Settings → Apple ID → Subscriptions; Android — Google Play → Subscriptions).'**
+  String get privacyS6CancelRest;
+
+  /// No description provided for @privacyS6RestoreLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore purchases.'**
+  String get privacyS6RestoreLead;
+
+  /// No description provided for @privacyS6RestoreRest.
+  ///
+  /// In en, this message translates to:
+  /// **'You may use Restore Purchases in the app to re-apply prior store purchases tied to the same store account.'**
+  String get privacyS6RestoreRest;
+
+  /// No description provided for @privacyS6LegacyLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Legacy paid app.'**
+  String get privacyS6LegacyLead;
+
+  /// No description provided for @privacyS6LegacyRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Users who purchased the app before it became free may receive Lifetime access according to our support process (for example, verification and an App Store offer code). Details are shown in the app; contact us via the Feedback Form if needed.'**
+  String get privacyS6LegacyRest;
+
   /// No description provided for @termsTitle.
   ///
   /// In en, this message translates to:
@@ -611,7 +695,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsLastUpdated.
   ///
   /// In en, this message translates to:
-  /// **'July 16, 2026'**
+  /// **'September 16, 2026'**
   String get termsLastUpdated;
 
   /// No description provided for @termsS1Heading.
@@ -641,7 +725,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsS3Heading.
   ///
   /// In en, this message translates to:
-  /// **'3. App Operation & Internet Requirements'**
+  /// **'3. App Operation and Internet Requirements'**
   String get termsS3Heading;
 
   /// No description provided for @termsS3LocalLead.
@@ -713,7 +797,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsS5Heading.
   ///
   /// In en, this message translates to:
-  /// **'5. Disclaimer of Warranties & Limitation of Liability'**
+  /// **'5. Disclaimer of Warranties and Limitation of Liability'**
   String get termsS5Heading;
 
   /// No description provided for @termsS5InfoLead.
@@ -737,7 +821,7 @@ abstract class AppLocalizations {
   /// No description provided for @termsS5RiskRest.
   ///
   /// In en, this message translates to:
-  /// **'The developer is not liable for any damage to your vehicle, your OBD II scanning hardware, or any accidents/safety hazards resulting from or related to the use of the App.'**
+  /// **'The developer is not liable for any damage to your vehicle, your OBD II scanning hardware, or any accidents or safety hazards resulting from or related to the use of the App.'**
   String get termsS5RiskRest;
 
   /// No description provided for @termsS5AsIs.
@@ -757,6 +841,150 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'These Terms of Service and any separate agreements shall be governed by, and construed in accordance with, the laws of Georgia, without regard to its conflict of law principles. Any legal action, suit, or proceeding arising out of or relating to these Terms or the use of the App shall be instituted exclusively in the competent courts of Tbilisi, Georgia.'**
   String get termsS6Body;
+
+  /// No description provided for @termsS7Heading.
+  ///
+  /// In en, this message translates to:
+  /// **'7. Premium, Subscriptions, and In-App Purchases'**
+  String get termsS7Heading;
+
+  /// No description provided for @termsS7PremiumLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium features.'**
+  String get termsS7PremiumLead;
+
+  /// No description provided for @termsS7PremiumRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Certain features require Premium access. Premium is optional; core diagnostic flows may remain available without Premium as described in the App.'**
+  String get termsS7PremiumRest;
+
+  /// No description provided for @termsS7ProductsLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Products.'**
+  String get termsS7ProductsLead;
+
+  /// No description provided for @termsS7ProductsRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium may be offered as:'**
+  String get termsS7ProductsRest;
+
+  /// No description provided for @termsS7ProductBullet1.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly and Monthly — auto-renewable subscriptions;'**
+  String get termsS7ProductBullet1;
+
+  /// No description provided for @termsS7ProductBullet2.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifetime — a one-time purchase that does not auto-renew.'**
+  String get termsS7ProductBullet2;
+
+  /// No description provided for @termsS7ProductNames.
+  ///
+  /// In en, this message translates to:
+  /// **'Product names, prices, and billing periods are shown in the App at the time of purchase and may vary by region and store.'**
+  String get termsS7ProductNames;
+
+  /// No description provided for @termsS7BillingLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Billing.'**
+  String get termsS7BillingLead;
+
+  /// No description provided for @termsS7BillingRest.
+  ///
+  /// In en, this message translates to:
+  /// **'All in-app purchases are processed by Apple (App Store) or Google (Google Play), as applicable. You agree to the store\'s payment terms. We are not responsible for store billing errors, failed charges, or account issues outside the App.'**
+  String get termsS7BillingRest;
+
+  /// No description provided for @termsS7AutoRenewLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Auto-renewal (subscriptions).'**
+  String get termsS7AutoRenewLead;
+
+  /// No description provided for @termsS7AutoRenewRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Subscriptions automatically renew unless you turn off auto-renewal at least 24 hours before the end of the current billing period. Your account will be charged for renewal within the window permitted by the store. You manage subscriptions in your store account settings (for example, on iOS: Settings → Apple ID → Subscriptions).'**
+  String get termsS7AutoRenewRest;
+
+  /// No description provided for @termsS7LifetimeLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Lifetime.'**
+  String get termsS7LifetimeLead;
+
+  /// No description provided for @termsS7LifetimeRest.
+  ///
+  /// In en, this message translates to:
+  /// **'The Lifetime product is a single, non-recurring charge. It does not convert into a subscription and does not auto-renew.'**
+  String get termsS7LifetimeRest;
+
+  /// No description provided for @termsS7RestoreLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Restore.'**
+  String get termsS7RestoreLead;
+
+  /// No description provided for @termsS7RestoreRest.
+  ///
+  /// In en, this message translates to:
+  /// **'The App provides Restore Purchases to restore eligible prior purchases associated with your store account on that platform.'**
+  String get termsS7RestoreRest;
+
+  /// No description provided for @termsS7RefundsLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Refunds.'**
+  String get termsS7RefundsLead;
+
+  /// No description provided for @termsS7RefundsRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Refund requests are governed by Apple\'s or Google\'s refund policies. We cannot override store refund decisions.'**
+  String get termsS7RefundsRest;
+
+  /// No description provided for @termsS7NoProLead.
+  ///
+  /// In en, this message translates to:
+  /// **'No professional reliance.'**
+  String get termsS7NoProLead;
+
+  /// No description provided for @termsS7NoProRest.
+  ///
+  /// In en, this message translates to:
+  /// **'Premium does not change the informational nature of the App (see Disclaimer of Warranties). Diagnostic and AI output remain for informational purposes only.'**
+  String get termsS7NoProRest;
+
+  /// No description provided for @termsS7LegacyLead.
+  ///
+  /// In en, this message translates to:
+  /// **'Legacy customers.'**
+  String get termsS7LegacyLead;
+
+  /// No description provided for @termsS7LegacyRest.
+  ///
+  /// In en, this message translates to:
+  /// **'If you bought the paid App before the freemium release, additional access may be granted through our documented process (in-app instructions and support). Abuse of legacy or promotional codes may result in revoked access.'**
+  String get termsS7LegacyRest;
+
+  /// No description provided for @termsS7PrivacyBefore.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy Policy: '**
+  String get termsS7PrivacyBefore;
+
+  /// No description provided for @termsS7PrivacyLink.
+  ///
+  /// In en, this message translates to:
+  /// **'https://obdvia.com/privacy_policy'**
+  String get termsS7PrivacyLink;
 }
 
 class _AppLocalizationsDelegate

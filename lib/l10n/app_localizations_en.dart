@@ -195,7 +195,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get privacyTitle => 'Privacy Policy';
 
   @override
-  String get privacyLastUpdated => 'July 16, 2026';
+  String get privacyLastUpdated => 'September 16, 2026';
 
   @override
   String get privacyS1Heading => '1. Information We Collect';
@@ -292,10 +292,60 @@ class AppLocalizationsEn extends AppLocalizations {
       'We implement reasonable technical measures to secure the text data you submit through the Feedback Form. However, please note that no method of transmission over the internet is 100% secure.';
 
   @override
+  String get privacyS6Heading =>
+      '6. In-App Purchases, Subscriptions, and Premium';
+
+  @override
+  String get privacyS6Intro =>
+      'OBDvia offers optional Premium access through in-app purchases processed by platform stores, not by us directly.';
+
+  @override
+  String get privacyS6AppleLead => 'Apple App Store (iOS).';
+
+  @override
+  String get privacyS6AppleRest =>
+      'Weekly and monthly Premium plans are auto-renewable subscriptions. Lifetime Premium is a one-time (non-consumable) purchase. Payment, billing, and refund eligibility are handled by Apple under Apple\'s terms and privacy policy. We do not collect or store your payment card or bank details.';
+
+  @override
+  String get privacyS6GoogleLead => 'Google Play (Android).';
+
+  @override
+  String get privacyS6GoogleRest =>
+      'Where available, Premium may be offered through Google Play billing (including third-party subscription management tools we use to validate purchases). Payment and refunds are handled by Google (and its policies). We do not receive your full payment credentials.';
+
+  @override
+  String get privacyS6DataLead => 'Data we process for Premium.';
+
+  @override
+  String get privacyS6DataRest =>
+      'To unlock features, the app may store Premium entitlement status (e.g. active plan, expiry, or lifetime flag) locally on your device using secure storage. We do not use this information for advertising or cross-app tracking. We do not operate our own billing server for vehicle or diagnostic data.';
+
+  @override
+  String get privacyS6CancelLead => 'Cancellation.';
+
+  @override
+  String get privacyS6CancelRest =>
+      'You can manage or cancel subscriptions in your device account settings (for example: iOS — Settings → Apple ID → Subscriptions; Android — Google Play → Subscriptions).';
+
+  @override
+  String get privacyS6RestoreLead => 'Restore purchases.';
+
+  @override
+  String get privacyS6RestoreRest =>
+      'You may use Restore Purchases in the app to re-apply prior store purchases tied to the same store account.';
+
+  @override
+  String get privacyS6LegacyLead => 'Legacy paid app.';
+
+  @override
+  String get privacyS6LegacyRest =>
+      'Users who purchased the app before it became free may receive Lifetime access according to our support process (for example, verification and an App Store offer code). Details are shown in the app; contact us via the Feedback Form if needed.';
+
+  @override
   String get termsTitle => 'Terms of Service';
 
   @override
-  String get termsLastUpdated => 'July 16, 2026';
+  String get termsLastUpdated => 'September 16, 2026';
 
   @override
   String get termsS1Heading => '1. Acceptance of Terms';
@@ -312,7 +362,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'The App provides vehicle diagnostic tools using the OBD II protocol. To analyze data, the App utilizes local, untrained open-weight Artificial Intelligence models (Gemma 2b and Gemma 4b) downloaded directly from Hugging Face.';
 
   @override
-  String get termsS3Heading => '3. App Operation & Internet Requirements';
+  String get termsS3Heading => '3. App Operation and Internet Requirements';
 
   @override
   String get termsS3LocalLead => 'Local Operation:';
@@ -354,7 +404,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsS5Heading =>
-      '5. Disclaimer of Warranties & Limitation of Liability';
+      '5. Disclaimer of Warranties and Limitation of Liability';
 
   @override
   String get termsS5InfoLead => 'For Informational Purposes Only:';
@@ -368,7 +418,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get termsS5RiskRest =>
-      'The developer is not liable for any damage to your vehicle, your OBD II scanning hardware, or any accidents/safety hazards resulting from or related to the use of the App.';
+      'The developer is not liable for any damage to your vehicle, your OBD II scanning hardware, or any accidents or safety hazards resulting from or related to the use of the App.';
 
   @override
   String get termsS5AsIs =>
@@ -380,4 +430,88 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get termsS6Body =>
       'These Terms of Service and any separate agreements shall be governed by, and construed in accordance with, the laws of Georgia, without regard to its conflict of law principles. Any legal action, suit, or proceeding arising out of or relating to these Terms or the use of the App shall be instituted exclusively in the competent courts of Tbilisi, Georgia.';
+
+  @override
+  String get termsS7Heading =>
+      '7. Premium, Subscriptions, and In-App Purchases';
+
+  @override
+  String get termsS7PremiumLead => 'Premium features.';
+
+  @override
+  String get termsS7PremiumRest =>
+      'Certain features require Premium access. Premium is optional; core diagnostic flows may remain available without Premium as described in the App.';
+
+  @override
+  String get termsS7ProductsLead => 'Products.';
+
+  @override
+  String get termsS7ProductsRest => 'Premium may be offered as:';
+
+  @override
+  String get termsS7ProductBullet1 =>
+      'Weekly and Monthly — auto-renewable subscriptions;';
+
+  @override
+  String get termsS7ProductBullet2 =>
+      'Lifetime — a one-time purchase that does not auto-renew.';
+
+  @override
+  String get termsS7ProductNames =>
+      'Product names, prices, and billing periods are shown in the App at the time of purchase and may vary by region and store.';
+
+  @override
+  String get termsS7BillingLead => 'Billing.';
+
+  @override
+  String get termsS7BillingRest =>
+      'All in-app purchases are processed by Apple (App Store) or Google (Google Play), as applicable. You agree to the store\'s payment terms. We are not responsible for store billing errors, failed charges, or account issues outside the App.';
+
+  @override
+  String get termsS7AutoRenewLead => 'Auto-renewal (subscriptions).';
+
+  @override
+  String get termsS7AutoRenewRest =>
+      'Subscriptions automatically renew unless you turn off auto-renewal at least 24 hours before the end of the current billing period. Your account will be charged for renewal within the window permitted by the store. You manage subscriptions in your store account settings (for example, on iOS: Settings → Apple ID → Subscriptions).';
+
+  @override
+  String get termsS7LifetimeLead => 'Lifetime.';
+
+  @override
+  String get termsS7LifetimeRest =>
+      'The Lifetime product is a single, non-recurring charge. It does not convert into a subscription and does not auto-renew.';
+
+  @override
+  String get termsS7RestoreLead => 'Restore.';
+
+  @override
+  String get termsS7RestoreRest =>
+      'The App provides Restore Purchases to restore eligible prior purchases associated with your store account on that platform.';
+
+  @override
+  String get termsS7RefundsLead => 'Refunds.';
+
+  @override
+  String get termsS7RefundsRest =>
+      'Refund requests are governed by Apple\'s or Google\'s refund policies. We cannot override store refund decisions.';
+
+  @override
+  String get termsS7NoProLead => 'No professional reliance.';
+
+  @override
+  String get termsS7NoProRest =>
+      'Premium does not change the informational nature of the App (see Disclaimer of Warranties). Diagnostic and AI output remain for informational purposes only.';
+
+  @override
+  String get termsS7LegacyLead => 'Legacy customers.';
+
+  @override
+  String get termsS7LegacyRest =>
+      'If you bought the paid App before the freemium release, additional access may be granted through our documented process (in-app instructions and support). Abuse of legacy or promotional codes may result in revoked access.';
+
+  @override
+  String get termsS7PrivacyBefore => 'Privacy Policy: ';
+
+  @override
+  String get termsS7PrivacyLink => 'https://obdvia.com/privacy_policy';
 }

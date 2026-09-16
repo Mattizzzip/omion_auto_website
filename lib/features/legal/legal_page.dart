@@ -6,6 +6,7 @@ import 'package:omion_auto_website/features/widgets/language_switcher.dart';
 import 'package:omion_auto_website/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+const kPrivacyPolicyUrl = 'https://obdvia.com/privacy_policy';
 const kGemmaTermsUrl = 'https://ai.google.dev/gemma/terms';
 const kHuggingFaceTermsUrl = 'https://huggingface.co/terms-of-service';
 const kHuggingFacePrivacyUrl = 'https://huggingface.co/privacy';

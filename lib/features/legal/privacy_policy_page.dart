@@ -82,6 +82,21 @@ class PrivacyPolicyPage extends StatelessWidget {
             legalParagraph(l10n.privacyS5Body),
           ],
         ),
+        LegalSection(
+          heading: l10n.privacyS6Heading,
+          body: [
+            legalParagraph(l10n.privacyS6Intro),
+            legalBoldLead(l10n.privacyS6AppleLead, l10n.privacyS6AppleRest),
+            legalBoldLead(l10n.privacyS6GoogleLead, l10n.privacyS6GoogleRest),
+            legalBoldLead(l10n.privacyS6DataLead, l10n.privacyS6DataRest),
+            legalBoldLead(l10n.privacyS6CancelLead, l10n.privacyS6CancelRest),
+            legalBoldLead(
+              l10n.privacyS6RestoreLead,
+              l10n.privacyS6RestoreRest,
+            ),
+            legalBoldLead(l10n.privacyS6LegacyLead, l10n.privacyS6LegacyRest),
+          ],
+        ),
       ],
     );
   }

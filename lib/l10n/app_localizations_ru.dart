@@ -196,7 +196,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get privacyTitle => 'Политика конфиденциальности';
 
   @override
-  String get privacyLastUpdated => '16 июля 2026';
+  String get privacyLastUpdated => '16 сентября 2026';
 
   @override
   String get privacyS1Heading => '1. Какие данные мы собираем';
@@ -293,10 +293,60 @@ class AppLocalizationsRu extends AppLocalizations {
       'Мы применяем разумные технические меры для защиты текстовых данных, которые вы отправляете через форму обратной связи. Однако ни один способ передачи данных через интернет не является на 100% безопасным.';
 
   @override
+  String get privacyS6Heading => '6. Покупки в приложении, подписки и Premium';
+
+  @override
+  String get privacyS6Intro =>
+      'OBDvia предлагает необязательный доступ Premium через покупки в приложении, которые обрабатываются магазинами платформ, а не нами напрямую.';
+
+  @override
+  String get privacyS6AppleLead => 'Apple App Store (iOS).';
+
+  @override
+  String get privacyS6AppleRest =>
+      'Планы Premium Weekly и Monthly — автоматически продлеваемые подписки. Lifetime Premium — разовая (non-consumable) покупка. Оплата, биллинг и право на возврат обрабатываются Apple в соответствии с условиями и политикой конфиденциальности Apple. Мы не собираем и не храним данные вашей платёжной карты или банковского счёта.';
+
+  @override
+  String get privacyS6GoogleLead => 'Google Play (Android).';
+
+  @override
+  String get privacyS6GoogleRest =>
+      'Где доступно, Premium может предлагаться через биллинг Google Play (включая сторонние инструменты управления подписками, которые мы используем для проверки покупок). Оплата и возвраты обрабатываются Google (и её политиками). Мы не получаем полные платёжные реквизиты.';
+
+  @override
+  String get privacyS6DataLead =>
+      'Данные, которые мы обрабатываем для Premium.';
+
+  @override
+  String get privacyS6DataRest =>
+      'Для разблокировки функций приложение может хранить статус Premium (например, активный план, срок действия или флаг Lifetime) локально на устройстве в защищённом хранилище. Мы не используем эту информацию для рекламы или межприложенного отслеживания. У нас нет собственного биллинг-сервера для данных автомобиля или диагностики.';
+
+  @override
+  String get privacyS6CancelLead => 'Отмена.';
+
+  @override
+  String get privacyS6CancelRest =>
+      'Вы можете управлять подписками или отменить их в настройках аккаунта устройства (например: iOS — Настройки → Apple ID → Подписки; Android — Google Play → Подписки).';
+
+  @override
+  String get privacyS6RestoreLead => 'Восстановление покупок.';
+
+  @override
+  String get privacyS6RestoreRest =>
+      'Вы можете использовать «Восстановить покупки» в приложении, чтобы повторно применить ранее совершённые покупки, привязанные к тому же аккаунту магазина.';
+
+  @override
+  String get privacyS6LegacyLead => 'Legacy-покупка приложения.';
+
+  @override
+  String get privacyS6LegacyRest =>
+      'Пользователи, которые купили приложение до перехода на бесплатную модель, могут получить доступ Lifetime по нашей процедуре поддержки (например, верификация и offer code App Store). Подробности указаны в приложении; при необходимости свяжитесь с нами через форму обратной связи.';
+
+  @override
   String get termsTitle => 'Условия использования';
 
   @override
-  String get termsLastUpdated => '16 июля 2026';
+  String get termsLastUpdated => '16 сентября 2026';
 
   @override
   String get termsS1Heading => '1. Принятие условий';
@@ -381,4 +431,87 @@ class AppLocalizationsRu extends AppLocalizations {
   @override
   String get termsS6Body =>
       'Настоящие Условия использования и любые отдельные соглашения регулируются законодательством Грузии без учёта коллизионных норм. Любые судебные иски, связанные с настоящими Условиями или использованием Приложения, рассматриваются исключительно в компетентных судах Тбилиси, Грузия.';
+
+  @override
+  String get termsS7Heading => '7. Premium, подписки и покупки в приложении';
+
+  @override
+  String get termsS7PremiumLead => 'Premium-функции.';
+
+  @override
+  String get termsS7PremiumRest =>
+      'Для некоторых функций требуется доступ Premium. Premium необязателен; базовые сценарии диагностики могут оставаться доступными без Premium, как описано в Приложении.';
+
+  @override
+  String get termsS7ProductsLead => 'Продукты.';
+
+  @override
+  String get termsS7ProductsRest => 'Premium может предлагаться в виде:';
+
+  @override
+  String get termsS7ProductBullet1 =>
+      'Weekly и Monthly — автоматически продлеваемые подписки;';
+
+  @override
+  String get termsS7ProductBullet2 =>
+      'Lifetime — разовая покупка без автопродления.';
+
+  @override
+  String get termsS7ProductNames =>
+      'Названия продуктов, цены и расчётные периоды отображаются в Приложении на момент покупки и могут отличаться в зависимости от региона и магазина.';
+
+  @override
+  String get termsS7BillingLead => 'Оплата.';
+
+  @override
+  String get termsS7BillingRest =>
+      'Все покупки в приложении обрабатываются Apple (App Store) или Google (Google Play), в зависимости от платформы. Вы соглашаетесь с условиями оплаты магазина. Мы не несём ответственности за ошибки биллинга магазина, неудачные списания или проблемы с аккаунтом вне Приложения.';
+
+  @override
+  String get termsS7AutoRenewLead => 'Автопродление (подписки).';
+
+  @override
+  String get termsS7AutoRenewRest =>
+      'Подписки автоматически продлеваются, если вы не отключите автопродление как минимум за 24 часа до конца текущего расчётного периода. Списание за продление происходит в срок, разрешённый магазином. Управление подписками — в настройках аккаунта магазина (например, на iOS: Настройки → Apple ID → Подписки).';
+
+  @override
+  String get termsS7LifetimeLead => 'Lifetime.';
+
+  @override
+  String get termsS7LifetimeRest =>
+      'Продукт Lifetime — единоразовое списание. Он не превращается в подписку и не продлевается автоматически.';
+
+  @override
+  String get termsS7RestoreLead => 'Восстановление.';
+
+  @override
+  String get termsS7RestoreRest =>
+      'В Приложении доступна функция «Восстановить покупки» для восстановления подходящих ранее совершённых покупок, связанных с вашим аккаунтом магазина на этой платформе.';
+
+  @override
+  String get termsS7RefundsLead => 'Возвраты.';
+
+  @override
+  String get termsS7RefundsRest =>
+      'Запросы на возврат регулируются политиками возврата Apple или Google. Мы не можем отменить решение магазина о возврате.';
+
+  @override
+  String get termsS7NoProLead => 'Без профессиональной опоры.';
+
+  @override
+  String get termsS7NoProRest =>
+      'Premium не меняет информационный характер Приложения (см. «Отказ от гарантий»). Диагностика и вывод ИИ остаются только в информационных целях.';
+
+  @override
+  String get termsS7LegacyLead => 'Пользователи legacy.';
+
+  @override
+  String get termsS7LegacyRest =>
+      'Если вы купили платное Приложение до перехода на freemium, дополнительный доступ может быть предоставлен по нашей документированной процедуре (инструкции в приложении и поддержка). Злоупотребление legacy- или промокодами может привести к отзыву доступа.';
+
+  @override
+  String get termsS7PrivacyBefore => 'Политика конфиденциальности: ';
+
+  @override
+  String get termsS7PrivacyLink => 'https://obdvia.com/privacy_policy';
 }

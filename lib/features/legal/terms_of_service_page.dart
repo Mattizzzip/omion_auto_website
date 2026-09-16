@@ -69,6 +69,29 @@ class TermsOfServicePage extends StatelessWidget {
             legalParagraph(l10n.termsS6Body),
           ],
         ),
+        LegalSection(
+          heading: l10n.termsS7Heading,
+          body: [
+            legalBoldLead(l10n.termsS7PremiumLead, l10n.termsS7PremiumRest),
+            legalBoldLead(l10n.termsS7ProductsLead, l10n.termsS7ProductsRest),
+            legalBullet(l10n.termsS7ProductBullet1),
+            legalBullet(l10n.termsS7ProductBullet2),
+            legalParagraph(l10n.termsS7ProductNames),
+            legalBoldLead(l10n.termsS7BillingLead, l10n.termsS7BillingRest),
+            legalBoldLead(
+              l10n.termsS7AutoRenewLead,
+              l10n.termsS7AutoRenewRest,
+            ),
+            legalBoldLead(l10n.termsS7LifetimeLead, l10n.termsS7LifetimeRest),
+            legalBoldLead(l10n.termsS7RestoreLead, l10n.termsS7RestoreRest),
+            legalBoldLead(l10n.termsS7RefundsLead, l10n.termsS7RefundsRest),
+            legalBoldLead(l10n.termsS7NoProLead, l10n.termsS7NoProRest),
+            legalBoldLead(l10n.termsS7LegacyLead, l10n.termsS7LegacyRest),
+            TextSpan(text: l10n.termsS7PrivacyBefore),
+            legalLink(l10n.termsS7PrivacyLink, kPrivacyPolicyUrl),
+            const TextSpan(text: '\n'),
+          ],
+        ),
       ],
     );
   }
