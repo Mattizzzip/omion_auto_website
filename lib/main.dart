@@ -12,7 +12,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
   final localeController = LocaleController();
-  await localeController.load();
+  try {
+    await localeController.load();
+  } catch (_) {
+    // SharedPreferences may fail in private mode; fall back to system locale.
+  }
   runApp(MyApp(localeController: localeController));
 }
 

@@ -14,9 +14,7 @@ class LocaleController extends ChangeNotifier {
   Locale _locale = _localeFromSystem();
   Locale get locale => _locale;
 
-  LocaleController() {
-    syncWebDocumentLocale(_locale.languageCode);
-  }
+  LocaleController();
 
   static Locale _localeFromSystem() {
     final code = WidgetsBinding.instance.platformDispatcher.locale.languageCode;
@@ -28,9 +26,9 @@ class LocaleController extends ChangeNotifier {
     final saved = prefs.getString(_storageKey);
     if (saved == 'ru' || saved == 'en') {
       _locale = Locale(saved!);
-      syncWebDocumentLocale(_locale.languageCode);
       notifyListeners();
     }
+    syncWebDocumentLocale(_locale.languageCode);
   }
 
   Future<void> setLocale(Locale locale) async {
